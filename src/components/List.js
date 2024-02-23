@@ -8,25 +8,27 @@ export default function List() {
   const dispatch = useDispatch();
 
   const handleAdd = () => {
+    if (inputValue === "") return alert("입력해주세요");
     dispatch(addItem({ id: Date.now(), text: inputValue }));
     setInputValue("");
   };
 
-  console.log(list);
-
   return (
     <div className="list">
-      <input
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-      />
-      <button className="addBtn" onClick={handleAdd}>
-        Add Item
-      </button>
+      <div className="header">
+        <input
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+        />
+        <button className="addBtn" onClick={handleAdd}>
+          Add Item
+        </button>
+      </div>
       <ul>
         {list.map((item) => (
           <li key={item.id}>
-            {item.text}
+            <span>{item.text}</span>
+
             <button
               className="deleteBtn"
               onClick={() => dispatch(removeItem(item.id))}
