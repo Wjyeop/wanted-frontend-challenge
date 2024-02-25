@@ -21,7 +21,7 @@ export default function List() {
           onChange={(e) => setInputValue(e.target.value)}
         />
         <button className="addBtn" onClick={handleAdd}>
-          Add Item
+          추가
         </button>
       </div>
       <ul>
@@ -33,7 +33,7 @@ export default function List() {
               className="deleteBtn"
               onClick={() => dispatch(removeItem(item.id))}
             >
-              Delete
+              삭제
             </button>
           </li>
         ))}
